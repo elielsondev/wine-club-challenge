@@ -17,7 +17,7 @@
 
 .linkNav {
   color: #555555;
-  font-family: 'Neo Sans Std';
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
@@ -29,4 +29,18 @@
   justify-content: space-between;
   height: 56px;
   width: 199px;
+}
+
+.numberItens {
+  display: flex;
+  align-items: center;
+  background-color: #ffffff;
+  border-bottom: 1px solid #55555594;
+  padding-left: 6px;
+  padding-right: 6px;
+  border-radius: 50%;
+  position: absolute;
+  margin-left: 180px;
+  margin-top: 36px;
+  color: #4FBFA5;
 }

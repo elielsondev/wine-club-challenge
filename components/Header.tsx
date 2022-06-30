@@ -42,6 +42,7 @@ function Header() {
           width={56}
           height={56}
         />
+        <p className={styles.numberItens}>0</p>
       </div>
     </header>
   )
