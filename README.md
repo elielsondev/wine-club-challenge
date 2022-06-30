@@ -1,34 +1,38 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Wine Club Challenge
 
-## Getting Started
+## O desafio será implementar um e-commerce para venda de vinhos que deverá ter as seguintes funcionalidades:
+ - [ ] Catálogo de produtos com paginação;
+ - [ ] Filtragem produtos por preço;
+ - [ ] Busca por nome do produto;
+ - [ ] Adicionar e remover produtos do carrinho;
+ 
+ ![image](https://user-images.githubusercontent.com/83602931/176501620-658f0b5c-8678-4734-83ac-b70e5c99e410.png)
 
-First, run the development server:
+## Instruções ReactJS:
+Chegou a hora de colocar a mão na massa!
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+- [ ] Siga esse [protótipo](https://www.figma.com/file/gByBxI9GBHKUjXRtO2fFh2/28%2F10-%F0%9F%96%A5-%F0%9F%93%B1---Wine-Test---WEB-%26-APP?node-id=680%3A6449)
+- [ ] Utilize Next.js e Typescript
+- [ ] Faça a estilização com styled-components
+- [ ] Utilize o local storage para gerenciar o carrinho
+- [ ] Por favor, inclua no README as instruções de instalação do projeto
+- [ ] Sinta-se livre para incluir quaisquer observações
+- [ ] Consuma nossa API Rest https://documenter.getpostman.com/view/10015622/UVJiiuHi#fe849253-c47a-492f-a860-08350296c570
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Critérios de Avaliação:
+Além dos requisitos levantados acima, iremos olhar para os seguintes critérios durante a correção do desafio:
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+- [ ] Gerenciamento de estado (Redux / ContextAPI);
+- [ ] Componentização;
+- [ ] Responsividade;
+- [ ] Preocupação com usabilidade;
+- [ ] Preocupação com acessibilidade;
+- [ ] Testes e2e;
+- [ ] Padrões de código;
+- [ ] Padrão de commits (Conventional);
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## Diferencial:
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- [ ] Fazer deploy na vercel ou em outro local de sua preferência e disponibilizar um link de visualização;
+- [ ] Testes unitários;
+- [ ] Utilização de cache do Next.js;
