@@ -1,72 +1,95 @@
 import Image from "next/image";
 import Vinho from "../public/images/Vinho.png";
 import styles from "../styles/Home.module.css";
+import { connect } from "react-redux";
+import { dataApi } from "../redux/action";
+import { useEffect } from "react";
 
-// const wineApi = async () => {
-//   const res = await fetch("https://wine-back-test.herokuapp.com/products?page=1&limit=10");
-//   const data = await res.json();
-//   console.log(data)
-// }
+function Section(props: any) {
+  const { apiCall, responseApi } = props;
 
-// wineApi();
-
-function Section() {
+  useEffect(() => {
+    const myApi = async () => {
+      const data = await fetch(
+        "https://wine-back-test.herokuapp.com/products?page=1&limit=9"
+      );
+      const res = await data.json();
+      apiCall(res);
+    };
+    myApi();
+  }, [apiCall]);
+  
+  console.log(responseApi.data);
+  
+  const { items, itemsPerPage, page, totalItems, totalPages } = responseApi.data;
   return (
     <section>
-      <p> 0 produtos encontrados</p>
+      <p className={styles.foundProducts}>
+        <span>{totalItems}</span>
+        produtos encontrados
+      </p>
+      <main className={ styles.adega }>
+      {items.map((item: any, index: any) => (
+        <div key={index}>
+          <div key={index} className={styles.productDiv}>
+            <div key={index} className={styles.productWine}>
+              <Image
+                key={index}
+                className={styles.wineImage}
+                src={Vinho}
+                alt={ item.name }
+                width={200}
+                height={230}
+              />
+            </div>
 
-      <div className={styles.productDiv}>
-        
-        <div className={styles.productWine}>
-          <Image
-            className={styles.wineImage}
-            src={Vinho}
-            alt="Vinho Quinta da Garrida"
-            width={200}
-            height={230}
+            <h3 key={index} className={styles.wineName}>
+              {item.name}
+            </h3>
+
+            <div key={index} className={styles.offerAndPrice}>
+              <p key={index} className={styles.scratchedPrice}>R${item.price.toFixed(2).toString().replace(".", ",")}</p>
+              <h5 key={index} className={styles.percentageDiscount}>{item.discount}% OFF</h5>
+            </div>
+
+            <div key={index} className={styles.offerAndPrice}>
+              <h5 key={index} className={styles.winePartner}>SÓCIO WINE</h5>
+              <p key={index} className={styles.priceDiscount}>
+                R$
+                <span
+                  key={index}
+                  className={styles.sizePrice}
+                >
+                  {item.priceMember.toFixed(0).toString().replace(".", "")}
+                </span>
+                 ,{item.priceMember.toFixed(3).toString().replace(".", "").substring(3, 5)}
+              </p>
+            </div>
+
+            <div key={index} className={styles.nonMember}>
+              <p key={index} className={styles.nonMemberText}>NÃO SÓCIO R$ {item.priceNonMember.toFixed(2).toString().replace(".", ",")}</p>
+            </div>
+          </div>
+
+          <input 
+            key={index}
+            className={styles.addButton}
+            type="button" 
+            value="ADICIONAR"
+            onClick={() => localStorage.setItem(item.name, JSON.stringify(item))}
           />
         </div>
-
-        <h3 className={styles.wineName}>
-          Bacalhôa Quinta da Garrida Colheita Selecionada 2015
-        </h3>
-
-        <div className={styles.offerAndPrice}>
-          <p className={styles.scratchedPrice}>
-            R$175,90
-          </p>
-          <h5 className={styles.percentageDiscount}>
-            45% OFF
-          </h5>
-        </div>
-
-        <div className={styles.offerAndPrice}>
-          <h5 className={styles.winePartner}>
-            SÓCIO WINE
-          </h5>
-          <p className={styles.priceDiscount}>
-            R$
-            <span className={styles.sizePrice}>
-              100
-            </span>
-          ,00
-          </p>
-        </div>
-
-        <div className={styles.nonMember}>
-          <p className={styles.nonMemberText}>
-            NÃO SÓCIO R$ 37,40
-          </p>
-        </div>
-      </div>
-
-      <input
-        className={styles.addButton}
-        type="button"
-        value="ADICIONAR"
-      />
+      ))}
+      </main>
     </section>
   );
 }
+const mapStateToProps = (state: any) => ({
+  responseApi: state.DataApi,
+});
 
-export default Section;
+const mapDispatchToProps = (dispatch: any) => ({
+  apiCall: (state: any) => dispatch(dataApi(state)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Section);
