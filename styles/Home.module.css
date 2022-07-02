@@ -179,3 +179,9 @@
   flex-wrap: wrap;
   margin-right: 150px; 
 }
+
+.loading {
+  color: #555555;
+  margin-top: 200px;
+  margin-bottom: 250px;
+}

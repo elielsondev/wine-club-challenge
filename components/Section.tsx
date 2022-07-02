@@ -4,9 +4,10 @@ import styles from "../styles/Home.module.css";
 import { connect } from "react-redux";
 import { dataApi } from "../redux/action";
 import { useEffect } from "react";
+import PageNumber from "./PageNumber";
 
 function Section(props: any) {
-  const { apiCall, responseApi } = props;
+  const { apiCall, responseApi, data } = props;
 
   useEffect(() => {
     const myApi = async () => {
@@ -19,15 +20,23 @@ function Section(props: any) {
     myApi();
   }, [apiCall]);
   
-  console.log(responseApi.data);
+  //console.log(responseApi.data);
   
   const { items, itemsPerPage, page, totalItems, totalPages } = responseApi.data;
+
+  
+  if(items === undefined) return (
+    <h1 className={styles.loading}>
+      Loading...
+    </h1>)
+
   return (
     <section>
       <p className={styles.foundProducts}>
         <span>{totalItems}</span>
         produtos encontrados
       </p>
+
       <main className={ styles.adega }>
       {items.map((item: any, index: any) => (
         <div key={index}>
@@ -36,7 +45,7 @@ function Section(props: any) {
               <Image
                 key={index}
                 className={styles.wineImage}
-                src={Vinho}
+                src={item.image}
                 alt={ item.name }
                 width={200}
                 height={230}
@@ -81,9 +90,11 @@ function Section(props: any) {
         </div>
       ))}
       </main>
+      <PageNumber responseApi={ responseApi.data } />
     </section>
   );
 }
+
 const mapStateToProps = (state: any) => ({
   responseApi: state.DataApi,
 });
