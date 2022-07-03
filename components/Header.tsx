@@ -3,12 +3,14 @@ import WineLogo from './WineLogo';
 import NavHeader from './NavHeader';
 import InfoUser from './InfoUser';
 
-function Header() {
+function Header(props: any) {
+  const { ask, useAsk } = props;
+
   return (
     <header className={ styles.header } >
       <WineLogo />
       <NavHeader />
-      <InfoUser />
+      <InfoUser useAsk={ useAsk } ask={ ask } />
     </header>
   )
 }

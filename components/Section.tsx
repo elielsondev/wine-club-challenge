@@ -26,7 +26,7 @@ function Section(props: any) {
   const { items, itemsPerPage, page, totalItems, totalPages } = responseApi;
 
   
-  if(items === undefined) return (
+  if(responseApi === undefined && items === undefined) return (
     <h1 className={styles.loading}>
       Loading...
     </h1>)
