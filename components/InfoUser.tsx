@@ -7,6 +7,11 @@ import Sacola from '../public/images/Sacola.png';
 
 function InfoUser(props: any) {
   const { ask, useAsk } = props;
+  const UseAsk = useAsk;
+
+  const handleClick = () => {
+    ask === 0 ? UseAsk(1) : UseAsk(0);
+  }
 
   return (
     <div className={styles.user}>
@@ -15,9 +20,7 @@ function InfoUser(props: any) {
         alt="Wine Logo"
         width={56}
         height={56}
-        onClick={ () => {
-          ask === 0 ? useAsk(1) : useAsk(0);          
-        } }
+        onClick={ () => handleClick() }
       />
       <Image
         src={Perfil}
