@@ -1,12 +1,59 @@
 import React from 'react';
+import styles from '../styles/Home.module.css';
 
 function PageNumber(props: any) {
-  const { items, itemsPerPage, page, totalItems, totalPages } = props.responseApi;
+  // const { items, itemsPerPage, page, totalItems, totalPages } = props.responseApi;
+  
   return (
-    <div>
-      <input 
+    <div className={styles.divPages}>
+      <input
+        className={ styles.pageButton }
         type="button"
-        value={page}
+        name='1'
+        value={1}
+        onClick={ () => { props.setPageActual(3) } }
+      />
+      <input
+        className={ styles.pageButton }
+        type="button"
+        name='2'
+        value={2}
+        onClick={ () => { props.setPageActual(2) } }
+      />
+      <input
+        className={ styles.pageButton }
+        type="button"
+        name='3'
+        value={3}
+        onClick={ () => { props.setPageActual(3) } }
+      />
+      <input
+        className={ styles.pageButton }
+        type="button"
+        name='4'
+        value={4}
+        onClick={ () => { props.setPageActual(4) } }
+      />
+      <input
+        className={ styles.pageButton }
+        type="button"
+        name='5'
+        value={5}
+        onClick={ () => { props.setPageActual(5) } }
+      />
+      <input
+        className={ styles.pageButton }
+        type="button"
+        name='6'
+        value={6}
+        onClick={ () => { props.setPageActual(6) } }
+      />
+      <input
+        className={ styles.pageButton }
+        type="button"
+        name='7'
+        value={7}
+        onClick={ () => { props.setPageActual(3) } }
       />
     </div>
   )

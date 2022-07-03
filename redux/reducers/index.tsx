@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import DataApi from './DataApi';
+import dataApiReducer from './dataApiReducer';
 
-const rootReducer = combineReducers({ DataApi });
+const rootReducer = combineReducers({ dataApiReducer, });
 
 export default rootReducer;

@@ -1,28 +1,29 @@
 import Image from "next/image";
-import Vinho from "../public/images/Vinho.png";
 import styles from "../styles/Home.module.css";
 import { connect } from "react-redux";
-import { dataApi } from "../redux/action";
-import { useEffect } from "react";
+import { dataApiAction } from "../redux/action";
+import { useEffect, useState } from "react";
 import PageNumber from "./PageNumber";
 
 function Section(props: any) {
-  const { apiCall, responseApi, data } = props;
+  const { apiCall, responseApi } = props;
+  const [ pageActual, setPageActual ] = useState(1)
 
   useEffect(() => {
     const myApi = async () => {
       const data = await fetch(
-        "https://wine-back-test.herokuapp.com/products?page=1&limit=9"
+        `https://wine-back-test.herokuapp.com/products?page=${pageActual}&limit=9`
       );
       const res = await data.json();
       apiCall(res);
     };
+
     myApi();
-  }, [apiCall]);
+  }, [apiCall, pageActual]);
   
   //console.log(responseApi.data);
   
-  const { items, itemsPerPage, page, totalItems, totalPages } = responseApi.data;
+  const { items, itemsPerPage, page, totalItems, totalPages } = responseApi;
 
   
   if(items === undefined) return (
@@ -38,12 +39,11 @@ function Section(props: any) {
       </p>
 
       <main className={ styles.adega }>
-      {items.map((item: any, index: any) => (
-        <div key={index}>
-          <div key={index} className={styles.productDiv}>
-            <div key={index} className={styles.productWine}>
+      {items.map((item: any) => (
+        <div key={item.id}>
+          <div className={styles.productDiv}>
+            <div className={styles.productWine}>
               <Image
-                key={index}
                 className={styles.wineImage}
                 src={item.image}
                 alt={ item.name }
@@ -52,21 +52,20 @@ function Section(props: any) {
               />
             </div>
 
-            <h3 key={index} className={styles.wineName}>
+            <h3 className={styles.wineName}>
               {item.name}
             </h3>
 
-            <div key={index} className={styles.offerAndPrice}>
-              <p key={index} className={styles.scratchedPrice}>R${item.price.toFixed(2).toString().replace(".", ",")}</p>
-              <h5 key={index} className={styles.percentageDiscount}>{item.discount}% OFF</h5>
+            <div className={styles.offerAndPrice}>
+              <p className={styles.scratchedPrice}>R${item.price.toFixed(2).toString().replace(".", ",")}</p>
+              <h5 className={styles.percentageDiscount}>{item.discount}% OFF</h5>
             </div>
 
-            <div key={index} className={styles.offerAndPrice}>
-              <h5 key={index} className={styles.winePartner}>SÓCIO WINE</h5>
-              <p key={index} className={styles.priceDiscount}>
+            <div className={styles.offerAndPrice}>
+              <h5 className={styles.winePartner}>SÓCIO WINE</h5>
+              <p className={styles.priceDiscount}>
                 R$
                 <span
-                  key={index}
                   className={styles.sizePrice}
                 >
                   {item.priceMember.toFixed(0).toString().replace(".", "")}
@@ -75,13 +74,13 @@ function Section(props: any) {
               </p>
             </div>
 
-            <div key={index} className={styles.nonMember}>
-              <p key={index} className={styles.nonMemberText}>NÃO SÓCIO R$ {item.priceNonMember.toFixed(2).toString().replace(".", ",")}</p>
+            <div className={styles.nonMember}>
+              <p className={styles.nonMemberText}>NÃO SÓCIO R$ {item.priceNonMember.toFixed(2).toString().replace(".", ",")}</p>
             </div>
           </div>
 
           <input 
-            key={index}
+            key={item.id}
             className={styles.addButton}
             type="button" 
             value="ADICIONAR"
@@ -90,17 +89,22 @@ function Section(props: any) {
         </div>
       ))}
       </main>
-      <PageNumber responseApi={ responseApi.data } />
+      <PageNumber
+        responseApi={ responseApi }
+        setPageActual={ setPageActual }
+      />
     </section>
   );
 }
 
 const mapStateToProps = (state: any) => ({
-  responseApi: state.DataApi,
+  responseApi: state.dataApiReducer.data,
 });
 
-const mapDispatchToProps = (dispatch: any) => ({
-  apiCall: (state: any) => dispatch(dataApi(state)),
-});
+const mapDispatchToProps = (dispatch: any) => (
+  {
+    apiCall: (state: any) => dispatch(dataApiAction(state)),
+  }
+);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Section);

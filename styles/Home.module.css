@@ -56,9 +56,9 @@
 .aside {
   display: flex;
   flex-direction: column;
-  padding-left: 13%;
-  width: 50%;
+  width: 750px;
   height: 100%;
+  padding-left: 180px;
 }
 
 .labelPrice {
@@ -84,7 +84,7 @@
 }
 
 .productWine {
-  display: grid;
+  display: flex;
   margin-left: 45px;
   margin-right: 45px;
   margin-bottom: -20px;
@@ -110,6 +110,8 @@
   font-style: normal;
   font-family:'Lucida Sans', Verdana, sans-serif;
   text-align: center;
+  margin-left: 2px;
+  margin-right: 2px;
 }
 
 .offerAndPrice {
@@ -184,4 +186,29 @@
   color: #555555;
   margin-top: 200px;
   margin-bottom: 250px;
+}
+
+.pageButton {
+  background-color: #DEDEDE;
+  color: #B6116E;
+  border: 1px solid #B6116E;
+  border-radius: 3px;
+  padding: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+  font-size: 16px;
+  font-weight: 400;
+  margin: 4px;
+}
+
+.pageButton:active {
+  background-color: #B6116E;
+  color: #DEDEDE;
+}
+
+.divPages {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  margin-left: -15%;
 }
