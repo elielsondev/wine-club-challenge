@@ -8,15 +8,21 @@ import styles from '../styles/Home.module.css';
 
 function HomePage() {
   const [ask, useAsk ] = useState(0);
+  const [bag, useBag] = useState(0);
 
   return (
     <div className={styles.body}>
-      <Header useAsk={ useAsk } ask={ ask } />
+      <Header 
+        useAsk={ useAsk } 
+        ask={ ask } 
+        bag={ bag }
+        useBag={ useBag }
+      />
       { ask === 1 ? <Search /> : undefined }
       <section className={styles.sectionHome}>
         <Aside />
         <Section />
-        <Bag />
+      { bag === 1 ? <Bag /> : undefined }
       </section>
     </div>
   )

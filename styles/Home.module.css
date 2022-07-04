@@ -1,6 +1,6 @@
 .body {
   background-color: #DEDEDE;
-  width: 1440px;
+  width: auto;
 }
 
 .header {
@@ -10,7 +10,7 @@
   display: flex;
   height: 88.23px;
   justify-content: space-evenly;
-  width: 1440px;
+  width: auto;
   margin-bottom: 15px;
 }
 
@@ -79,7 +79,6 @@
   display: flex;
   flex-direction: column;
   width: 750px;
-  height: 100%;
   padding-left: 180px;
 }
 
@@ -230,16 +229,63 @@
 
 .divPages {
   display: flex;
-  justify-content: center;
-  align-content: center;
-  margin-left: -15%;
+  height: auto;
+  width: auto;
 }
 
 .bag {
   position: absolute;
-  margin-left: 76%;
-  margin-top: -15px;
-  height: 100%;
-  width: 300px;
-  background-color: #B6116E;
+  margin-left: 57em;
+  margin-top: -12px;
+  height: auto;
+  width: 413px;
+  background-color: #ffffff;
+  box-shadow: -6px 9.73384px 14.6008px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+}
+
+#bagEmpty {
+  position: absolute;
+  margin-left: 38em;
+  margin-top: -12px;
+  height: auto;
+  width: 413px;
+  background-color: #ffffff;
+  box-shadow: -6px 9.73384px 14.6008px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  padding-left: 5%;
+}
+
+.listDiv {
+  display: flex;
+  align-items: center;
+  background-color: #dedede40;
+  border: 0.5px solid #555555;
+  margin: 3px;
+  border-radius: 5px;
+}
+
+.price {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  margin-top: -20px;
+  margin-bottom: -20px;
+  padding-top: -50px;
+}
+
+.partner {
+  margin: 2px;
+  color: #B6116E;
+}
+
+.nonPartner {
+  margin: 2px;
+  color: #555555;
+}
+
+.allValues {
+  display: flex;
+  justify-content: flex-end;
+  margin: 10px;
 }

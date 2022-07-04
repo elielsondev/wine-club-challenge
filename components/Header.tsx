@@ -4,13 +4,18 @@ import NavHeader from './NavHeader';
 import InfoUser from './InfoUser';
 
 function Header(props: any) {
-  const { ask, useAsk } = props;
+  const { ask, useAsk, bag, useBag } = props;
 
   return (
     <header className={ styles.header } >
       <WineLogo />
       <NavHeader />
-      <InfoUser useAsk={ useAsk } ask={ ask } />
+      <InfoUser 
+        useAsk={ useAsk } 
+        ask={ ask }
+        bag={ bag }
+        useBag={ useBag }
+      />
     </header>
   )
 }

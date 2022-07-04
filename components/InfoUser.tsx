@@ -7,11 +7,16 @@ import Sacola from '../public/images/Sacola.png';
 import { connect } from 'react-redux';
 
 function InfoUser(props: any) {
-  const { ask, useAsk } = props;
+  const { ask, useAsk, bag, useBag } = props;
   const UseAsk = useAsk;
+  const UseBag = useBag;
 
-  const handleClick = () => {
+  const handleClickAsk = () => {
     ask === 0 ? UseAsk(1) : UseAsk(0);
+  }
+
+  const handleClickBag = () => {
+    bag === 0 ? UseBag(1) : UseBag(0);
   }
 
   return (
@@ -21,7 +26,7 @@ function InfoUser(props: any) {
         alt="Wine Logo"
         width={56}
         height={56}
-        onClick={ () => handleClick() }
+        onClick={ () => handleClickAsk() }
       />
       <Image
         src={Perfil}
@@ -34,6 +39,7 @@ function InfoUser(props: any) {
         alt="Wine Logo"
         width={56}
         height={56}
+        onClick={ () => handleClickBag() }
       />
       <p className={styles.numberItens}>{props.productBag.length}</p>
     </div>

@@ -17,10 +17,22 @@ function Section(props: any) {
       const res = await data.json();
       apiCall(res);
     };
+
+    const gerente = () => {
+      if(productBag.length > 0) {
+        // localStorage.clear();
+        localStorage.setItem('carrinho', JSON.stringify(productBag));
+      }
+
+    }
+
     myApi();
-  }, [apiCall, pageActual]);
+    gerente();
+  }, [apiCall, pageActual, productBag]);
 
   const { items, itemsPerPage, page, totalItems, totalPages } = responseApi;
+
+
 
   const addItem = (wine: any) => {
     shoppingCart(wine)
