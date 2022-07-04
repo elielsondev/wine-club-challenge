@@ -1,13 +1,13 @@
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import { connect } from "react-redux";
-import { dataApiAction } from "../redux/action";
+import { dataApiAction, shoppingBagAction } from "../redux/action";
 import { useEffect, useState } from "react";
 import PageNumber from "./PageNumber";
 
 function Section(props: any) {
-  const { apiCall, responseApi } = props;
-  const [ pageActual, setPageActual ] = useState(1)
+  const { apiCall, responseApi, productBag, shoppingCart } = props;
+  const [ pageActual, usePageActual ] = useState(1);
 
   useEffect(() => {
     const myApi = async () => {
@@ -17,14 +17,15 @@ function Section(props: any) {
       const res = await data.json();
       apiCall(res);
     };
-
     myApi();
   }, [apiCall, pageActual]);
-  
-  //console.log(responseApi.data);
-  
+
   const { items, itemsPerPage, page, totalItems, totalPages } = responseApi;
 
+  const addItem = (wine: any) => {
+    shoppingCart(wine)
+    console.log(productBag);
+  }
   
   if(responseApi === undefined && items === undefined) return (
     <h1 className={styles.loading}>
@@ -84,14 +85,15 @@ function Section(props: any) {
             className={styles.addButton}
             type="button" 
             value="ADICIONAR"
-            onClick={() => localStorage.setItem(item.name, JSON.stringify(item))}
+            // onClick={() => localStorage.setItem(item.name, JSON.stringify(item))}
+            onClick={ () => addItem(item) }
           />
         </div>
       ))}
       </main>
       <PageNumber
         responseApi={ responseApi }
-        setPageActual={ setPageActual }
+        usePageActual={ usePageActual }
       />
     </section>
   );
@@ -99,11 +101,13 @@ function Section(props: any) {
 
 const mapStateToProps = (state: any) => ({
   responseApi: state.dataApiReducer.data,
+  productBag: state.shoppingBagReducer,
 });
 
 const mapDispatchToProps = (dispatch: any) => (
   {
     apiCall: (state: any) => dispatch(dataApiAction(state)),
+    shoppingCart: (state: any) => dispatch(shoppingBagAction(state)),
   }
 );
 

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Aside from '../components/Aside';
+import Bag from '../components/Bag';
 import Header from '../components/Header';
 import Search from '../components/Search';
 import Section from '../components/Section';
@@ -15,6 +16,7 @@ function HomePage() {
       <section className={styles.sectionHome}>
         <Aside />
         <Section />
+        <Bag />
       </section>
     </div>
   )

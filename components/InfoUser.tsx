@@ -4,6 +4,7 @@ import Lupa from '../public/images/Lupa.png';
 import LupaOn from '../public/images/LupaOn.png';
 import Perfil from '../public/images/Perfil.png';
 import Sacola from '../public/images/Sacola.png';
+import { connect } from 'react-redux';
 
 function InfoUser(props: any) {
   const { ask, useAsk } = props;
@@ -34,9 +35,13 @@ function InfoUser(props: any) {
         width={56}
         height={56}
       />
-      <p className={styles.numberItens}>0</p>
+      <p className={styles.numberItens}>{props.productBag.length}</p>
     </div>
   )
 }
 
-export default InfoUser;
+const mapStateToProps = (state: any) => ({
+  productBag: state.shoppingBagReducer,
+});
+
+export default connect(mapStateToProps)(InfoUser);

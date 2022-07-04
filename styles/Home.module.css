@@ -234,3 +234,12 @@
   align-content: center;
   margin-left: -15%;
 }
+
+.bag {
+  position: absolute;
+  margin-left: 76%;
+  margin-top: -15px;
+  height: 100%;
+  width: 300px;
+  background-color: #B6116E;
+}
