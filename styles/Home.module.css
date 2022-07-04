@@ -1,6 +1,6 @@
 .body {
   background-color: #DEDEDE;
-  width: auto;
+  width: 1440px;
 }
 
 .header {
@@ -8,6 +8,7 @@
   background-color: #ffffff;
   box-shadow: 0 0 0 2.5px rgba(105, 105, 105, 0.192);
   display: flex;
+  width: 1440px;
   height: 88.23px;
   justify-content: space-evenly;
   width: auto;
@@ -234,26 +235,27 @@
 }
 
 .bag {
-  position: absolute;
-  margin-left: 57em;
+  position:fixed;
+  margin-left: 70%;
+  margin-right: 10em;
   margin-top: -12px;
   height: auto;
-  width: 413px;
+  width: 420px;
   background-color: #ffffff;
   box-shadow: -6px 9.73384px 14.6008px rgba(0, 0, 0, 0.1);
   padding: 10px;
 }
 
 #bagEmpty {
-  position: absolute;
-  margin-left: 38em;
+  position:fixed;
+  margin-left: 70%;
+  margin-right: 10em;
   margin-top: -12px;
   height: auto;
-  width: 413px;
+  width: 420px;
   background-color: #ffffff;
   box-shadow: -6px 9.73384px 14.6008px rgba(0, 0, 0, 0.1);
   padding: 10px;
-  padding-left: 5%;
 }
 
 .listDiv {
