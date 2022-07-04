@@ -1,7 +1,7 @@
 # Wine Club Challenge
 
 ## O desafio será implementar um e-commerce para venda de vinhos que deverá ter as seguintes funcionalidades:
- - [ ] Catálogo de produtos com paginação;
+ - [x] Catálogo de produtos com paginação;
  - [ ] Filtragem produtos por preço;
  - [ ] Busca por nome do produto;
  - [ ] Adicionar e remover produtos do carrinho;
@@ -36,3 +36,28 @@ Além dos requisitos levantados acima, iremos olhar para os seguintes critérios
 - [ ] Fazer deploy na vercel ou em outro local de sua preferência e disponibilizar um link de visualização;
 - [ ] Testes unitários;
 - [ ] Utilização de cache do Next.js;
+
+# Wine Club Challenge
+
+## Este projeto foi realizado com Next.js e TypeScript:
+Para iniciar o projeto com eles é necessário utilizar o comando a seguir:
+```
+npx create-next-app@latest --typescript
+```
+Assim que o pacote for instalado, basta digitar o comando `npm run dev` e acessar o `http://localhost:3000` para ver a aplicação funcionando.
+
+No gerenciamento de estado utilizamos o Redux, e para aplica-lo ao projeto, basta inserir no terminal na pasta do projeto o comando a seguir:
+
+```
+npm install redux react-redux next-redux-wrapper
+```
+O Comando acima realiza a instalação do redux, porém pra que faz uso da extensão `Redux DevTools`, que serve basicamente para visualizarmos se os dados foram inputados de fato no Redux, devemos inserir o comando a seguir:
+```
+npm install --save-dev redux-devtools-extension
+```
+Também é necessário adicionar o `redux-thunk` caso realize alguma chamada de API na action do Redux por exemplo, nesse caso o conando é:
+```
+npm i redux-thunk
+```
+
+Para saber mais informações ou passo a passo para aplicar o Redux numa aplicação Next.js: [Clique Aqui!](https://dev.to/jullymac/next-js-redux-a93)
